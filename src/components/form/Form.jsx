@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from '@mui/material';
 
 export function Form() {
   return (
@@ -16,7 +17,12 @@ export function Form() {
         <label>Promoções</label>
         <input type="checkbox" />
 
-        <button type="submit">Cadastrar</button>
+        <Button
+          type="submit"
+          variant="contained"
+        >
+          Cadastrar
+        </Button>
       </form>
     </>
   )
