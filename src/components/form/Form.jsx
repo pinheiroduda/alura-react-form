@@ -15,6 +15,8 @@ export function Form() {
         
         <label>Promoções</label>
         <input type="checkbox" />
+
+        <button type="submit">Cadastrar</button>
       </form>
     </>
   )
