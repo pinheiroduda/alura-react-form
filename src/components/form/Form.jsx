@@ -1,19 +1,16 @@
 import React from 'react';
+
 import { Button } from '@mui/material';
+
+import { TextField } from '@mui/material';
 
 export function Form() {
   return (
     <>
       <form>
-        <label>Nome</label>
-        <input type="text" />
-        
-        <label>Sobrenome</label>
-        <input type="text" />
-        
-        <label>CPF</label>
-        <input type="text" />
-        
+        <TextField id='name' label='Nome' fullWidth/>
+        <TextField id='lastname' label='Sobrenome' fullWidth/>
+        <TextField id='cpf' label='CPF' fullWidth/>
         <label>Promoções</label>
         <input type="checkbox" />
 
