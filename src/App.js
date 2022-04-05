@@ -1,7 +1,13 @@
+import { Form } from './components/form/Form'
+
+import { Container } from '@mui/material'
+
 function App() {
   return (
-    <h1>Hello World</h1>
-  );
+    <Container component="article" maxWidth="sm">
+      <Form />
+    </Container>
+  )
 }
 
-export default App;
+export default App
