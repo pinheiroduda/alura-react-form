@@ -1,10 +1,21 @@
 import React from 'react'
 
-import { TextField, FormControlLabel, Switch, Button } from '@mui/material'
+import {
+  Typography,
+  TextField,
+  FormControlLabel,
+  Switch,
+  Button
+} from '@mui/material'
+
+import '@fontsource/roboto/400.css'
 
 export function Form() {
   return (
     <>
+      <Typography variant="h3" maxWidth="sm">
+        Formulário de cadastro
+      </Typography>
       <form>
         <TextField id="name" label="Nome" fullWidth margin="normal" />
         <TextField id="lastname" label="Sobrenome" fullWidth margin="normal" />
