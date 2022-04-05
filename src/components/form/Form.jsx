@@ -12,11 +12,11 @@ export function Form() {
         <TextField id='lastname' label='Sobrenome' fullWidth/>
         <TextField id='cpf' label='CPF' fullWidth/>
         <label>Promoções</label>
-        <input type="checkbox" />
+        <input type='checkbox' />
 
         <Button
-          type="submit"
-          variant="contained"
+          type='submit'
+          variant='contained'
         >
           Cadastrar
         </Button>
