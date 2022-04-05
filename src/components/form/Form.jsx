@@ -8,9 +8,9 @@ export function Form() {
   return (
     <>
       <form>
-        <TextField id='name' label='Nome' fullWidth/>
-        <TextField id='lastname' label='Sobrenome' fullWidth/>
-        <TextField id='cpf' label='CPF' fullWidth/>
+        <TextField id='name' label='Nome' fullWidth margin='normal'/>
+        <TextField id='lastname' label='Sobrenome' fullWidth margin='normal'/>
+        <TextField id='cpf' label='CPF' fullWidth margin='normal'/>
         <label>Promoções</label>
         <input type='checkbox' />
 
