@@ -10,7 +10,7 @@ import {
 
 import '@fontsource/roboto/400.css'
 
-export function Form() {
+export function Form({ onSubmit }) {
   const [name, setName] = useState('')
   const [lastname, setLastname] = useState('')
   const [cpf, setCpf] = useState('')
@@ -25,6 +25,7 @@ export function Form() {
       <form
         onSubmit={event => {
           event.preventDefault()
+          onSubmit({ name, lastname, cpf, sale, news })
         }}
       >
         <TextField
