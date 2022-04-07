@@ -61,11 +61,11 @@ export function Form() {
           label="Promoções"
           control={
             <Switch
+              checked={sale}
               onChange={event => {
                 setSale(event.target.checked)
               }}
               name="sale"
-              defaultChecked={sale}
             />
           }
         />
@@ -73,11 +73,11 @@ export function Form() {
           label="Novidades"
           control={
             <Switch
+              checked={news}
               onChange={event => {
                 setNews(event.target.checked)
               }}
               name="news"
-              defaultChecked={news}
             />
           }
         />
