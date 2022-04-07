@@ -28,11 +28,7 @@ export function Form() {
         <TextField
           value={name}
           onChange={event => {
-            let temporaryName = event.target.value
-            if (temporaryName.length > 4) {
-              temporaryName = temporaryName(name.substring(0, 3))
-            }
-            setName(temporaryName)
+            setName(event.target.value)
           }}
           id="name"
           label="Nome"
