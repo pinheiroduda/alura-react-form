@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 
 import {
   Typography,
@@ -25,7 +25,6 @@ export function Form() {
       <form
         onSubmit={event => {
           event.preventDefault()
-          console.log(name, lastname)
         }}
       >
         <TextField
