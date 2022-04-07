@@ -10,13 +10,13 @@ import {
 
 import '@fontsource/roboto/400.css'
 
-export function Form({ onSubmit }) {
+export function Form({ onSubmit, validateCPF }) {
   const [name, setName] = useState('')
   const [lastname, setLastname] = useState('')
   const [cpf, setCpf] = useState('')
   const [sale, setSale] = useState(true)
   const [news, setNews] = useState(true)
-  const [error, setError] = useState({ cpf: { valid: Boolean, text: '' } })
+  const [error, setError] = useState({ cpf: { valid: true, text: '' } })
 
   return (
     <>
@@ -55,11 +55,9 @@ export function Form({ onSubmit }) {
             setCpf(event.target.value)
           }}
           onBlur={event => {
+            const isValid = validateCPF(cpf)
             setError({
-              cpf: {
-                valid: false,
-                text: 'O campo CPF deve ter 11 dígitos'
-              }
+              cpf: isValid
             })
           }}
           error={!error.cpf.valid}
