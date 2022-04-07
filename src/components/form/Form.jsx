@@ -16,6 +16,7 @@ export function Form({ onSubmit }) {
   const [cpf, setCpf] = useState('')
   const [sale, setSale] = useState(true)
   const [news, setNews] = useState(true)
+  const [error, setError] = useState({ cpf: { valid: Boolean, text: '' } })
 
   return (
     <>
@@ -53,6 +54,16 @@ export function Form({ onSubmit }) {
           onChange={event => {
             setCpf(event.target.value)
           }}
+          onBlur={event => {
+            setError({
+              cpf: {
+                valid: false,
+                text: 'O campo CPF deve ter 11 dígitos'
+              }
+            })
+          }}
+          error={!error.cpf.valid}
+          helperText={error.cpf.text}
           id="cpf"
           label="CPF"
           fullWidth
