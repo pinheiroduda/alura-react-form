@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { TextField, Button } from '@mui/material'
 
-export function DeliveryData(onSubmit) {
+export function DeliveryData({ onSubmit }) {
   const [cep, setCep] = useState('')
   const [address, setAddress] = useState('')
   const [number, setNumber] = useState('')
