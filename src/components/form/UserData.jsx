@@ -1,10 +1,15 @@
 import React from 'react'
 import { TextField, Button } from '@mui/material'
 
-export function UserData() {
+export function UserData({ onSubmit }) {
   return (
     <>
-      <form>
+      <form
+        onSubmit={event => {
+          event.preventDefault()
+          onSubmit()
+        }}
+      >
         <TextField
           id="email"
           label="email"
