@@ -1,10 +1,13 @@
 import { Form } from './components/form/Form'
 
-import { Container } from '@mui/material'
+import { Container, Typography } from '@mui/material'
 
 function App() {
   return (
     <Container component="article" maxWidth="sm">
+      <Typography variant="h3" maxWidth="sm">
+        Formulário de cadastro
+      </Typography>
       <Form onSubmit={onSubmitForm} validateCPF={validateCPF} />
     </Container>
   )
