@@ -1,12 +1,6 @@
 import React, { useState } from 'react'
 
-import {
-  Typography,
-  TextField,
-  FormControlLabel,
-  Switch,
-  Button
-} from '@mui/material'
+import { TextField, FormControlLabel, Switch, Button } from '@mui/material'
 
 import '@fontsource/roboto/400.css'
 
@@ -20,9 +14,6 @@ export function PersonalData({ onSubmit, validateCPF }) {
 
   return (
     <>
-      <Typography variant="h3" maxWidth="sm">
-        Formulário de cadastro
-      </Typography>
       <form
         onSubmit={event => {
           event.preventDefault()
