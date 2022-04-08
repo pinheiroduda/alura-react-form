@@ -4,7 +4,7 @@ import { DeliveryData } from './DeliveryData'
 import { PersonalData } from './PersonalData'
 import { UserData } from './UserData'
 
-import { Typography } from '@mui/material'
+import { Typography, Stepper, Step, StepLabel } from '@mui/material'
 
 export function Form({ onSubmit, validateCPF }) {
   const [currentStage, setCurrentStage] = useState(0)
@@ -32,5 +32,23 @@ export function Form({ onSubmit, validateCPF }) {
     setCurrentStage(currentStage + 1)
   }
 
-  return <>{forms[currentStage]}</>
+  return (
+    <>
+      <Stepper activeStep={currentStage}>
+        <Step>
+          <StepLabel>Login</StepLabel>
+        </Step>
+        <Step>
+          <StepLabel>Dados Pessoais</StepLabel>
+        </Step>
+        <Step>
+          <StepLabel>Endereço</StepLabel>
+        </Step>
+        <Step>
+          <StepLabel>Finalização</StepLabel>
+        </Step>
+      </Stepper>
+      {forms[currentStage]}
+    </>
+  )
 }
