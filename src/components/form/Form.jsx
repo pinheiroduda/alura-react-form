@@ -8,18 +8,19 @@ import { UserData } from './UserData'
 
 export function Form({ onSubmit, validateCPF }) {
   const [currentStage, setCurrentStage] = useState(0)
-  return <>{CurrentForm(currentStage)}</>
-}
 
-function CurrentForm(stage) {
-  switch (stage) {
-    case 0:
-      return <UserData />
-    case 1:
-      return <PersonalData />
-    case 2:
-      return <DeliveryData />
-    default:
-      return <Typography>Erro ao selecionar formilário</Typography>
+  function CurrentForm(stage) {
+    switch (stage) {
+      case 0:
+        return <UserData />
+      case 1:
+        return <PersonalData onSubmit={onSubmit} validateCPF={validateCPF} />
+      case 2:
+        return <DeliveryData />
+      default:
+        return <Typography>Erro ao selecionar formilário</Typography>
+    }
   }
+
+  return <>{CurrentForm(currentStage)}</>
 }
