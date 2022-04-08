@@ -14,6 +14,7 @@ export function UserData({ onSubmit }) {
           id="email"
           label="email"
           type="email"
+          required
           fullWidth
           margin="normal"
         />
@@ -21,6 +22,7 @@ export function UserData({ onSubmit }) {
           id="password"
           label="senha"
           type="password"
+          required
           fullWidth
           margin="normal"
         />

@@ -27,6 +27,7 @@ export function PersonalData({ onSubmit, validateCPF }) {
           }}
           id="name"
           label="Nome"
+          required
           fullWidth
           margin="normal"
         />
@@ -37,6 +38,7 @@ export function PersonalData({ onSubmit, validateCPF }) {
           }}
           id="lastname"
           label="Sobrenome"
+          required
           fullWidth
           margin="normal"
         />
@@ -55,11 +57,13 @@ export function PersonalData({ onSubmit, validateCPF }) {
           helperText={error.cpf.text}
           id="cpf"
           label="CPF"
+          required
           fullWidth
           margin="normal"
         />
         <FormControlLabel
           label="Promoções"
+          required
           control={
             <Switch
               checked={sale}
@@ -72,6 +76,7 @@ export function PersonalData({ onSubmit, validateCPF }) {
         />
         <FormControlLabel
           label="Novidades"
+          required
           control={
             <Switch
               checked={news}
