@@ -3,6 +3,7 @@ import React, { useState, useContext } from 'react'
 import { TextField, FormControlLabel, Switch, Button } from '@mui/material'
 
 import { RegisterValidations } from '../../context/RegisterValidations'
+import { UseErrors } from '../../hooks/useErrors'
 
 export function PersonalData({ onSubmit }) {
   const [name, setName] = useState('')
@@ -10,25 +11,8 @@ export function PersonalData({ onSubmit }) {
   const [cpf, setCpf] = useState('')
   const [sale, setSale] = useState(true)
   const [news, setNews] = useState(true)
-  const [error, setError] = useState({ cpf: { valid: true, text: '' } })
-
-  const validations = useContext(RegisterValidations) 
-
-  function canSend() {
-    for (let field in error) {
-      if(!error[field].valid){
-        return false
-      }
-    }
-    return true
-  }
-
-  function validateFields(event) {
-    const {name, value} = event.target
-    const newState = {...error}
-    newState[name] = validations[name](value)
-    setError(newState)    
-  }
+  const validations = useContext(RegisterValidations)
+  const [error, validateFields, canSend] = UseErrors(validations)
 
   return (
     <>
