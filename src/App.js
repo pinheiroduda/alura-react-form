@@ -1,6 +1,7 @@
 import { Container, Typography } from '@mui/material'
 
 import { Form } from './components/form/Form'
+import { RegisterValidations } from './context/RegisterValidations'
 import { validateCPF, validatePassword } from './models/register'
 
 function App() {
@@ -9,10 +10,11 @@ function App() {
       <Typography variant="h3" maxWidth="sm">
         Formulário de cadastro
       </Typography>
-      <Form
-        onSubmit={onSubmitForm}
-        validations={{ cpf: validateCPF, password: validatePassword }}
-      />
+      <RegisterValidations.Provider
+        value={{ cpf: validateCPF, password: validatePassword }}
+      >
+        <Form onSubmit={onSubmitForm} />
+      </RegisterValidations.Provider>
     </Container>
   )
 }
