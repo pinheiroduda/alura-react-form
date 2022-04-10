@@ -6,7 +6,7 @@ import { UserData } from './UserData'
 
 import { Typography, Stepper, Step, StepLabel } from '@mui/material'
 
-export function Form({ onSubmit, validations }) {
+export function Form({ onSubmit }) {
   const [currentStage, setCurrentStage] = useState(0)
   const [collectedData, setCollectedData] = useState({})
 
@@ -17,9 +17,9 @@ export function Form({ onSubmit, validations }) {
   })
 
   const forms = [
-    <UserData onSubmit={getData} validations={validations}/>,
-    <PersonalData onSubmit={getData} validations={validations} />,
-    <DeliveryData onSubmit={getData} validations={validations} />,
+    <UserData onSubmit={getData}/>,
+    <PersonalData onSubmit={getData} />,
+    <DeliveryData onSubmit={getData} />,
     <Typography variant="h5">Obrigado por se cadastrar!</Typography>
   ]
 
