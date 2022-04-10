@@ -1,16 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 
 import { TextField, FormControlLabel, Switch, Button } from '@mui/material'
 
-import '@fontsource/roboto/400.css'
+import { RegisterValidations } from '../../context/RegisterValidations'
 
-export function PersonalData({ onSubmit, validations }) {
+export function PersonalData({ onSubmit }) {
   const [name, setName] = useState('')
   const [lastname, setLastname] = useState('')
   const [cpf, setCpf] = useState('')
   const [sale, setSale] = useState(true)
   const [news, setNews] = useState(true)
   const [error, setError] = useState({ cpf: { valid: true, text: '' } })
+
+  const validations = useContext(RegisterValidations) 
 
   function canSend() {
     for (let field in error) {
