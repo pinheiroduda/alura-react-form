@@ -106,7 +106,7 @@ export function PersonalData({ onSubmit, validations }) {
           }
         />
         <Button type="submit" variant="contained">
-          Cadastrar
+          Próximo
         </Button>
       </form>
     </>

@@ -62,7 +62,7 @@ export function UserData({ onSubmit, validations }) {
           margin="normal"
         />
         <Button type="submit" variant="contained">
-          Cadastrar
+          Próximo
         </Button>
       </form>
     </>
