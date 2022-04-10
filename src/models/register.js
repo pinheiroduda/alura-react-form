@@ -12,8 +12,8 @@ export function validateCPF(cpf) {
   }
 }
 
-export function validatePassword() {
-  if (validatePassword.length < 4 || validatePassword.length > 72) {
+export function validatePassword(password) {
+  if (password.length < 4 || password.length > 72) {
     return { valid: false, text: 'A senha deve possuir entre 4 e 72 dígitos.' }
   } else {
     return { valid: true, text: '' }
