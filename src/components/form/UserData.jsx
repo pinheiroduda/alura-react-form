@@ -1,16 +1,38 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { TextField, Button } from '@mui/material'
+import { RegisterValidations } from '../../context/RegisterValidations'
 
 export function UserData({ onSubmit }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState({ password: { valid: true, text: '' } })
+
+  const validations = useContext(RegisterValidations)
+
+  function validateFields(event) {
+    const {name, value} = event.target
+    const newState = {...error}
+    newState[name] = validations[name](value)
+    setError(newState)    
+  }
+
+  function canSend() {
+    for (let field in error) {
+      if(!error[field].valid){
+        return false
+      }
+    }
+    return true
+  }
 
   return (
     <>
       <form
         onSubmit={event => {
           event.preventDefault()
-          onSubmit({ email, password })
+          if(canSend()) {
+            onSubmit({ email, password })
+          }
         }}
       >
         <TextField
@@ -20,6 +42,7 @@ export function UserData({ onSubmit }) {
           }}
           id="email"
           label="email"
+          name="name"
           type="email"
           required
           fullWidth
@@ -30,15 +53,19 @@ export function UserData({ onSubmit }) {
           onChange={event => {
             setPassword(event.target.value)
           }}
+          onBlur={validateFields}
+          error={!error.password.valid}
+          helperText={error.password.text}
           id="password"
           label="senha"
+          name="password"
           type="password"
           required
           fullWidth
           margin="normal"
         />
         <Button type="submit" variant="contained">
-          Cadastrar
+          Próximo
         </Button>
       </form>
     </>

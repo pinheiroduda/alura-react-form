@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 
 import { TextField, FormControlLabel, Switch, Button } from '@mui/material'
 
-import '@fontsource/roboto/400.css'
+import { RegisterValidations } from '../../context/RegisterValidations'
 
-export function PersonalData({ onSubmit, validateCPF }) {
+export function PersonalData({ onSubmit }) {
   const [name, setName] = useState('')
   const [lastname, setLastname] = useState('')
   const [cpf, setCpf] = useState('')
@@ -12,12 +12,32 @@ export function PersonalData({ onSubmit, validateCPF }) {
   const [news, setNews] = useState(true)
   const [error, setError] = useState({ cpf: { valid: true, text: '' } })
 
+  const validations = useContext(RegisterValidations) 
+
+  function canSend() {
+    for (let field in error) {
+      if(!error[field].valid){
+        return false
+      }
+    }
+    return true
+  }
+
+  function validateFields(event) {
+    const {name, value} = event.target
+    const newState = {...error}
+    newState[name] = validations[name](value)
+    setError(newState)    
+  }
+
   return (
     <>
       <form
         onSubmit={event => {
           event.preventDefault()
-          onSubmit({ name, lastname, cpf, sale, news })
+          if(canSend()) {
+            onSubmit({ name, lastname, cpf, sale, news })
+          }
         }}
       >
         <TextField
@@ -27,6 +47,7 @@ export function PersonalData({ onSubmit, validateCPF }) {
           }}
           id="name"
           label="Nome"
+          name="name"
           required
           fullWidth
           margin="normal"
@@ -38,6 +59,7 @@ export function PersonalData({ onSubmit, validateCPF }) {
           }}
           id="lastname"
           label="Sobrenome"
+          name="lastname"
           required
           fullWidth
           margin="normal"
@@ -47,22 +69,19 @@ export function PersonalData({ onSubmit, validateCPF }) {
           onChange={event => {
             setCpf(event.target.value)
           }}
-          onBlur={event => {
-            const isValid = validateCPF(cpf)
-            setError({
-              cpf: isValid
-            })
-          }}
+          onBlur={validateFields}
           error={!error.cpf.valid}
           helperText={error.cpf.text}
           id="cpf"
           label="CPF"
+          name="cpf"
           required
           fullWidth
           margin="normal"
         />
         <FormControlLabel
           label="Promoções"
+          name="sale"
           required
           control={
             <Switch
@@ -76,6 +95,7 @@ export function PersonalData({ onSubmit, validateCPF }) {
         />
         <FormControlLabel
           label="Novidades"
+          name="news"
           required
           control={
             <Switch
@@ -88,7 +108,7 @@ export function PersonalData({ onSubmit, validateCPF }) {
           }
         />
         <Button type="submit" variant="contained">
-          Cadastrar
+          Próximo
         </Button>
       </form>
     </>
